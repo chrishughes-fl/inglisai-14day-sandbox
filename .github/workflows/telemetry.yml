@@ -1,0 +1,23 @@
+name: 14-Day Gateway Telemetry
+on:
+  schedule:
+    - cron: '*/30 * * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install -r requirements.txt httpx
+      - run: python telemetry_runner.py
+      - run: |
+          git config user.name "INGLIS-Telemetry-Bot"
+          git config user.email "bot@inglisai.com"
+          git add gateway_diagnostics.json
+          git commit -m "chore: update gateway telemetry" || exit 0
+          git push

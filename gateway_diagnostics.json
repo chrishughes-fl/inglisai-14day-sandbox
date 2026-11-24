@@ -1,0 +1,10 @@
+[
+  {
+    "timestamp": "2026-11-24T09:59:54.751362+00:00",
+    "status": "OPERATIONAL",
+    "sha256": "02F01CE030299B93",
+    "gate_latency_us": 1340.82,
+    "waf_repulsion": "100% (422 BLOCK)",
+    "logic_drift": "0.00%"
+  }
+]
